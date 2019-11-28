@@ -1,24 +1,25 @@
 package com.codecool.workbook.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "questions")
 public class Question {
 
     @Id
-    @GeneratedValue
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
     @NotNull
@@ -29,7 +30,7 @@ public class Question {
     private Module module;
 
     @NotNull
-    private boolean isAnswered;
+    private Boolean isAnswered;
 
     private String answer;
 }
