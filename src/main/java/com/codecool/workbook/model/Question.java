@@ -26,8 +26,7 @@ public class Question {
     private String question;
 
     @NotNull
-    @Enumerated
-    private Module module;
+    private String module;
 
     @NotNull
     private Boolean isAnswered;
